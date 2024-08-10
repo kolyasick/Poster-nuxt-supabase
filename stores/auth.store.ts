@@ -13,7 +13,7 @@ export const useAuthStore = defineStore("auth", {
             const {error, data} = await useSupabaseClient().auth.signInWithOAuth({
                 provider: prov,
                 options: {
-                    redirectTo: 'https://poster-kolyasick.netlify.app' + '/login'
+                    redirectTo: window.location.origin + '/login'
                 }
             })
         },
