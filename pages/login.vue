@@ -13,7 +13,6 @@ useSeoMeta({
 watchEffect(() => {
   if (user.value && user.value.email) {
     authStore.checkOrCreateUser();
-    console.log(user.value);
   }
 });
 </script>
