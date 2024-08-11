@@ -13,7 +13,7 @@ export interface User {
 export interface Post {
     id: number
     title: string
-    url: string
+    url?: string
     userId: string
     isLiked: boolean
     user?: User
