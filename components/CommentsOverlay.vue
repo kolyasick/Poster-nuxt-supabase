@@ -23,14 +23,7 @@ const addComment = async () => {
     }
 
     try {
-        const { data } = await axios.post<Post>('/api/add-comment', 
-        { 
-            text: text.value,
-            postId: props.post.id,
-            userId: user.value?.id
-        });
-
-        const commentUser = {
+         const commentUser = {
             id: user.value?.id,
             name: user.value?.user_metadata.full_name,
             email: user.value?.email || '',
@@ -38,17 +31,22 @@ const addComment = async () => {
         };
 
         const newComment = {
-            id: data.id,        
+            id: 1,        
             postId: props.post.id, 
             text: text.value,      
             userId: commentUser.id, 
             user: commentUser,    
         };
-
-        text.value = '';
-
         props.post.comments.push(newComment);
         
+        const { data } = await axios.post<Post>('/api/add-comment', 
+        { 
+            text: text.value,
+            postId: props.post.id,
+            userId: user.value?.id
+        });
+
+        text.value = '';
 
     } catch (error) {
         console.error('Failed to add comment:', error);
