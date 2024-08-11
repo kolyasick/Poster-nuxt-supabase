@@ -111,7 +111,7 @@ const deletePost = async (postId: number) => {
         <p class="mt-3 text-md font-normal mb-3 text-white/85 break-words">
           {{ post.title }}
         </p>
-        <img class="rounded max-h-[450px] object-cover w-full" :src="config.public.bucketUrl + post.url" alt="">
+        <img v-if="post.url" class="rounded max-h-[450px] object-cover w-full" :src="config.public.bucketUrl + post.url" alt="">
         <div class="mt-4 flex items-center text-white">
           <div @click="toggleLike" class="flex text-sm mr-3 cursor-pointer">
             <svg :fill="post.isLiked ? 'red' : 'none'" viewBox="0 0 24 24" class="w-5 h-5 mr-1" :stroke="post.isLiked ? 'red' : 'currentColor'">
